@@ -47,6 +47,4 @@ def build_model(num_tokens, d_model, d_ffn, seq_len, num_layers,output_logits=Fa
     
     model = gMLP_LanguageModel(num_tokens,d_model,d_ffn,seq_len,num_layers,output_logits)
 
-    if torch.cuda.is_available():
-        model = model.cuda()
     return model
