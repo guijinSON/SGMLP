@@ -9,7 +9,7 @@ class PreTrainTrainer():
     def __init__(self,parser):
         self.args = parser.parse_args()
 
-        self.train_loader, self.val_loader = load_dataloader(self.args.seq_len,self.batch_size)
+        self.train_loader, self.val_loader = load_dataloader(self.args.seq_len,self.args.batch_size)
         self.model = build_model(self.args.vocab_size, self.args.d_model, self.args.d_ffn, self.args.seq_len, self.args.num_layers,output_logits=True)
 
         self.optimizer = load_optimizer(self.model.parameters(),self.args.init_lr)
@@ -18,6 +18,7 @@ class PreTrainTrainer():
 
     
     def pretrain(self):
+        print('initalize wandb')
         wandb.init()
         step = 0
         running_loss = 0.0
@@ -27,7 +28,7 @@ class PreTrainTrainer():
 
             self.optimizer.zero_grad()
 
-            pred = model(batch)
+            pred = self.model(batch)
             pred = pred.contiguous().view(-1,pred.shape[-1])
 
             loss = self.loss_fn(pred,label)
@@ -45,7 +46,7 @@ class PreTrainTrainer():
                         batch = torch.squeeze(batch)
                         label = label.flatten()
 
-                        pred = model(batch)
+                        pred = self.model(batch)
                         pred = pred.contiguous().view(-1,pred.shape[-1])
 
                         loss = self.loss_fn(pred,label)
