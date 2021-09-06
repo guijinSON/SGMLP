@@ -17,7 +17,7 @@ def load_dataloader(max_length=128,batch_size=64):
     val_dataset   = tokenize_dataset(val_dataset,tokenizer,max_length)
     
     train_loader = DataLoader(train_dataset, batch_size=batch_size)
-    val_loader   = DataLoader(train_dataset, batch_size=batch_size)
+    val_loader   = DataLoader(val_dataset, batch_size=batch_size)
     return train_loader,val_loader
 
 def tokenize_dataset(dataset,tokenizer,max_length):
