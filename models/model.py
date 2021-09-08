@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import csv
 from models.embedding import TransformerEmbedding
-from models.layer import gMLPBLOCK_CLS
+from models.layer import gMLPBLOCK
 
 
 
@@ -12,11 +12,11 @@ class gMLP(nn.Module):
         super(gMLP,self).__init__()
         self.evaluate = evaluate
         if self.evaluate:
-            route = open('weights/routing.csv','w', newline='\n')
+            route = open('weights/routing.csv','w', newline='')
             wr = csv.writer(route)
-            self.model = nn.Sequential(*[gMLPBLOCK_CLS(d_model,d_ffn,seq_len,evaluate,wr) for _ in range(num_layers)])
+            self.model = nn.Sequential(*[gMLPBLOCK(d_model,d_ffn,seq_len,evaluate,wr) for _ in range(num_layers)])
         else:
-            self.model = nn.Sequential(*[gMLPBLOCK_CLS(d_model,d_ffn,seq_len,evaluate) for _ in range(num_layers)])
+            self.model = nn.Sequential(*[gMLPBLOCK(d_model,d_ffn,seq_len,evaluate) for _ in range(num_layers)])
     def forward(self,x):
         if self.evaluate:
             x,csv = model(x)
