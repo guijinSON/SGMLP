@@ -58,12 +58,13 @@ class SpatialGatingUnit_Sigmoid(nn.Module):
     def __init__(self,d_ffn,seq_len,evaluate,wr):
         super(SpatialGatingUnit_Sigmoid,self).__init__()
         self.layer_norm = nn.LayerNorm(d_ffn)
-        self.spatial_cls = nn.Sequential(nn.Linear(d_ffn,1),nn.Sigmoid())
+        self.spatial_cls = nn.Sequential(nn.Linear(d_ffn,10),nn.GELU(),
+                                        nn.Linear(10,1),nn.Sigmoid())
         self.spatial_proj_i = nn.Conv1d(seq_len,seq_len,1)
         self.spatial_proj_ii = nn.Conv1d(seq_len,seq_len,1)
 
         nn.init.constant_(self.spatial_proj_i.bias, -1.0)
-        nn.init.constant_(self.spatial_proj_ii.bias, -1.0)
+        nn.init.constant_(self.spatial_proj_ii.bias, 1.0)
         self.gelu = nn.GELU()
         self.wr = wr
         self.evaluate = evaluate
@@ -78,8 +79,6 @@ class SpatialGatingUnit_Sigmoid(nn.Module):
             self.wr.writerow(cls_idx)
 
         output = [self.spatial_proj_i(torch.unsqueeze(x[n],0)) if idx==0 else self.spatial_proj_ii(torch.unsqueeze(x[n],0)) for n,idx in enumerate(cls_idx)]
-        #output = [self.spatial_proj_i(torch.unsqueeze(x[n],0)) if n== 0 else self.spatial_proj_ii(torch.unsqueeze(x[n],0)) \
-        #        if n==1 else self.spatial_proj_iii(torch.unsqueeze(x[n],0)) if n==2 else self.spatial_proj_iv(torch.unsqueeze(x[n],0)) for n,idx in enumerate(cls_idx)]
         output = torch.squeeze(torch.stack(output)) 
         output = self.gelu(output+residual) 
         return output
