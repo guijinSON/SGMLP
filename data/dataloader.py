@@ -1,18 +1,26 @@
 from datasets import load_dataset
 from data.tokenizer import load_tokenizer
 from torch.utils.data import DataLoader,DistributedSampler
-
+from datasets import interleave_datasets
 import numpy as np
 import random
 from configs import parser
+from datasets import concatenate_datasets, load_dataset
+
 
 args = parser.parse_args()
 
 def load_dataloader(max_length=128,batch_size=64,rank=None,world_size=None):
-    train_dataset = load_dataset("allenai/c4",'en', split='train', streaming=True)#,cache_dir='/raid/nlp/data')#, streaming=True)
-    val_dataset = load_dataset("allenai/c4",'en', split='validation', streaming=True)#,cache_dir='/raid/nlp/data')#, streaming=True)
+    train_allenc4_dataset = load_dataset("allenai/c4",'en', split='train', streaming=True).take(256*20000)
+    train_c4_dataset = load_dataset('c4', "en", split='train', streaming=True).take(256*20000)
+   # train_wiki_dataset = load_dataset("wikicorpus", "raw_en",split='train',streaming=True)
 
-    train_dataset = train_dataset.take(256*40000)
+    #bookcorpus = load_dataset("bookcorpus", split="train")
+    #wiki = load_dataset("wikipedia", "20200501.en", split="train")
+
+    val_dataset = load_dataset("c4",'en', split='validation',streaming=True)#,cache_dir='/raid/nlp/data')#, streaming=True)
+
+    train_dataset = interleave_datasets([train_allenc4_dataset,train_c4_dataset])
     val_dataset = val_dataset.take(1000)
     
     tokenizer = load_tokenizer()
@@ -43,3 +51,4 @@ def mask_batch(batch):
     mask_prob  = args.mask_prob
     label = batch.copy()
     return np.stack([mask_sent(sent,mask_token,mask_prob) for sent in batch]),label
+
