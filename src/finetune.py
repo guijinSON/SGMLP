@@ -17,7 +17,7 @@ class FinetuneTrainer():
       
     self.loss_fn = load_lossfn(self.task)
     self.metric = load_metric('glue',self.task)
-    self.optimizer = load_optimizer(self.model.parameters(),lr=lr)
+    self.optimizer = load_optimizer(self.model.parameters(),learning_rate=lr)
     
     train_data = load_glue_dataset(self.task,'train',max_length=maxlen)
     val_data = load_glue_dataset(self.task,'validation',max_length=maxlen)
