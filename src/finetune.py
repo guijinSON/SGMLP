@@ -7,7 +7,7 @@ import wandb
 from data.dataloader import load_glue_dataset
 from tqdm import tqdm
 
-class FintuneTrainer():
+class FinetuneTrainer():
   def __init__(self,task,vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device,lr=5e-5,batch_size=64):
     self.task = task.lower()
     self.device = device
