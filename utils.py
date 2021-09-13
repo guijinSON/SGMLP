@@ -5,10 +5,10 @@ import numpy as np
 def load_optimizer(param, learning_rate):
     return optim.AdamW(params=param, lr=learning_rate)
 
-def load_lossfn(self.task='Pretrain',ignore_idx=None):
-    if self.task = 'Pretrain':
+def load_lossfn(task='Pretrain',ignore_idx=None):
+    if task = 'Pretrain':
         return nn.NLLLoss(ignore_index=ignore_idx)
-    if self.task in ['cola','sst2','sstb']:
+    if task in ['cola','sst2','sstb']:
         return nn.BCEWithLogitsLoss()
 
 class ScheduledOptim():
