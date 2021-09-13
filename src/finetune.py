@@ -32,17 +32,17 @@ class FintuneTrainer():
     for epoch in range(10):
       running_loss = 0.0
       for batch in tqdm(self.train_dataloader):
-         x = batch['input_ids'].to(self.device)
-            label = batch['label'].to(torch.float).to(self.device)
+        x = batch['input_ids'].to(self.device)
+        label = batch['label'].to(torch.float).to(self.device)
 
-            self.optimizer.zero_grad()
+        self.optimizer.zero_grad()
 
-            pred = self.model(x).squeeze()
+        pred = self.model(x).squeeze()
 
-            loss = self.loss_fn(pred,label)
-            loss.backward()
+        loss = self.loss_fn(pred,label)
+        loss.backward()
 
-            running_loss += loss.item()
+        running_loss += loss.item()
 
       self.model.eval()
       validation_loss = 0.0
