@@ -54,7 +54,7 @@ def mask_batch(batch):
 
 def load_glue_dataset(task,split,max_length=128):
     dataset = load_dataset('glue', task, split=split)
-    tokenizer = AutoTokenizer.from_pretrained('roberta-base')
+    tokenizer = load_tokenizer()
     keys = [key for key in dataset.column_names if key not in ['label','idx']]
     for key in keys:
         tokenized = tokenizer(dataset[key],max_length=max_length,truncation=True, padding='max_length')
