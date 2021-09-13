@@ -32,7 +32,7 @@ class FinetuneTrainer():
     for epoch in range(10):
       running_loss = 0.0
       for batch in tqdm(self.train_dataloader):
-        x = batch['input_ids'].to(self.device)
+        x = batch['sentence_input_ids'].to(self.device)
         label = batch['label'].to(torch.float).to(self.device)
 
         self.optimizer.zero_grad()
@@ -48,7 +48,7 @@ class FinetuneTrainer():
       validation_loss = 0.0
       with torch.no_grad():
           for batch in self.val_dataloader:
-              x = batch['input_ids'].to(self.device)
+              x = batch['sentence_input_ids'].to(self.device)
               label = batch['label'].to(self.device)
 
               pred = self.model(x).squeeze()
