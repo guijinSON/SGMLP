@@ -55,6 +55,7 @@ class FinetuneTrainer():
               loss = self.loss_fn(pred,label.to(torch.float))
 
               pred = torch.round(pred).to(torch.int)
+              valiation_loss += loss.item()
               self.metric.add_batch(predictions=pred,references=label)
 
           wandb.log({"Train Loss": (running_loss/len(self.train_dataloader)),'metric':self.metric.compute(), "Validation Loss":(validation_loss/len(self.val_dataloader))})
