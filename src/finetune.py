@@ -57,7 +57,7 @@ class FinetuneTrainer():
               pred = torch.round(pred).to(torch.int)
               self.metric.add_batch(predictions=pred,references=label)
 
-          wandb.log({"Train Loss": (running_loss/evaluate),'metric':self.metric.compute(), "Validation Loss":(validation_loss/len(self.val_loader))})
+          wandb.log({"Train Loss": (running_loss/len(self.train_dataloader)),'metric':self.metric.compute(), "Validation Loss":(validation_loss/len(self.val_dataloader))})
       self.model.train()
       running_loss = 0.0
       torch.save(self.model.state_dict(),f'{self.task}_{epoch}.pth')
