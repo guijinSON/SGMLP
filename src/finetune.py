@@ -12,7 +12,7 @@ class FinetuneTrainer():
     self.task = task.lower()
     self.device = device
     if self.task in ['cola','sst2','sstb']:
-      self.model = OneSentClassificationHead(vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device)
+      self.model = OneSentClassificationHead(vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device).to(self.device)
       
       
     self.loss_fn = load_lossfn(self.task)
