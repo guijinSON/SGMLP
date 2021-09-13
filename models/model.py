@@ -64,6 +64,7 @@ def build_model(num_tokens, d_model, d_ffn, seq_len, num_layers,output_logits=Fa
 
 class OneSentClassificationHead(nn.Module):
   def __init__(self,vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device):
+    super(OneSentClassificationHead,self).__init__()
     self.vocab_size = vocab_size
     self.d_model = d_model
     self.d_ffn = d_ffn
