@@ -75,9 +75,9 @@ class OneSentClassificationHead(nn.Module):
     
     self.model = self.load_model()
     
-    self.pooler = nn.Sequential(nn.Linear(self.d_model,self.d_model),
-                                nn.Tanh())
-    self.projection = nn.Sequential(nn.Dropout(),
+    #self.pooler = nn.Sequential(nn.Linear(self.d_model,self.d_model),
+    #                            nn.Tanh())
+    self.projection = nn.Sequential(nn.LayerNorm(self.d_model),
                                     nn.Linear(self.d_model,1,bias=False))
     
   def forward(self,x):
