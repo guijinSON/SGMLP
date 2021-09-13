@@ -19,8 +19,8 @@ class FinetuneTrainer():
     self.metric = load_metric('glue',self.task)
     self.optimizer = load_optimizer(self.model.parameters(),learning_rate=lr)
     
-    train_data = load_glue_dataset(self.task,'train',max_length=maxlen)
-    val_data = load_glue_dataset(self.task,'validation',max_length=maxlen)
+    train_dataset = load_glue_dataset(self.task,'train',max_length=maxlen)
+    val_dataset = load_glue_dataset(self.task,'validation',max_length=maxlen)
     
     train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle =True)
