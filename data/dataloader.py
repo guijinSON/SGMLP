@@ -8,7 +8,7 @@ from configs import parser
 from datasets import concatenate_datasets, load_dataset
 
 
-args = parser.parse_args()
+#args = parser.parse_args()
 
 def load_dataloader(max_length=128,batch_size=64,rank=None,world_size=None):
     train_allenc4_dataset = load_dataset("allenai/c4",'en', split='train', streaming=True).take(256*20000)
