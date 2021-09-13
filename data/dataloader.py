@@ -52,3 +52,14 @@ def mask_batch(batch):
     label = batch.copy()
     return np.stack([mask_sent(sent,mask_token,mask_prob) for sent in batch]),label
 
+def load_glue_dataset(task,split,max_length=128):
+    dataset = load_dataset('glue', task, split=split)
+    tokenizer = AutoTokenizer.from_pretrained('roberta-base')
+    keys = [key for key in dataset.column_names if key not in ['label','idx']]
+    for key in keys:
+        tokenized = tokenizer(dataset[key],max_length=max_length,truncation=True, padding='max_length')
+        input_ids = f'{key}_input_ids'
+        dataset = dataset.add_column(input_ids, tokenized['input_ids'])
+    column = [_ for _ in dataset.column_names if _ not in keys and _ != 'idx']
+    dataset.set_format(type='torch',columns=column)
+    return dataset
