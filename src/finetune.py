@@ -22,8 +22,8 @@ class FinetuneTrainer():
     train_dataset = load_glue_dataset(self.task,'train',max_length=maxlen)
     val_dataset = load_glue_dataset(self.task,'validation',max_length=maxlen)
     
-    train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle =True)
+    self.train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    self.val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle =True)
     
       
   def finetune(self):
@@ -47,7 +47,7 @@ class FinetuneTrainer():
       self.model.eval()
       validation_loss = 0.0
       with torch.no_grad():
-          for batch in self.val_loader:
+          for batch in self.val_dataloader:
               x = batch['input_ids'].to(self.device)
               label = batch['label'].to(self.device)
 
