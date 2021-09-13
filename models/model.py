@@ -82,7 +82,7 @@ class OneSentClassificationHead(nn.Module):
     
   def forward(self,x):
     x = self.model(x)[:,0]
-    x = self.pooler(x)
+    #x = self.pooler(x)
     x = self.projection(x)
     return x
     
