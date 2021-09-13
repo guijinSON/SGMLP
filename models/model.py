@@ -86,7 +86,7 @@ class OneSentClassificationHead(nn.Module):
     return x
     
   def load_model(self):
-    model = build_model(self.vocab_size,self.d_model,self.d_ffn,self.maxlen,self.layers,output_loogits=False)
+    model = build_model(self.vocab_size,self.d_model,self.d_ffn,self.maxlen,self.layers,output_logits=False)
     weight = torch.load(self.weight_path,map_location=torch.device(self.device))
     model_weight = {}
     for key,val in weight.items():
