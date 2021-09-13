@@ -80,6 +80,7 @@ class OneSentClassificationHead(nn.Module):
                                     nn.Linear(self.d_model,1,bias=False))
     
   def forward(self,x):
+    x = self.model(x)[:,0]
     x = self.pooler(x)
     x = self.projection(x)
     return x
