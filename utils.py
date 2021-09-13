@@ -6,7 +6,7 @@ def load_optimizer(param, learning_rate):
     return optim.AdamW(params=param, lr=learning_rate)
 
 def load_lossfn(task='Pretrain',ignore_idx=None):
-    if task = 'Pretrain':
+    if task == 'Pretrain':
         return nn.NLLLoss(ignore_index=ignore_idx)
     if task in ['cola','sst2','sstb']:
         return nn.BCEWithLogitsLoss()
