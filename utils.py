@@ -44,8 +44,8 @@ class ScheduledOptim():
         for param_group in self._optimizer.param_groups:
             param_group['lr'] = lr
             
-def computeTime(model, device='cuda'):
-    inputs = torch.randint(0,50265,(64, 128, 512))
+def computeTime(model,vocab_size = 50265, batch_size = 64, max_length = 128, device='cuda'):
+    inputs = torch.randint(0,vocab_size,(batch_size, max_length))
     if device == 'cuda':
         model = model.cuda()
         inputs = inputs.cuda()
