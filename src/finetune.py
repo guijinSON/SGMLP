@@ -29,6 +29,7 @@ class FinetuneTrainer():
   def finetune(self):
     wandb.init()
     self.model.train()
+    step =0
     for epoch in range(10):
       running_loss = 0.0
       for batch in tqdm(self.train_dataloader):
@@ -46,6 +47,7 @@ class FinetuneTrainer():
 
         self.model.eval()
         validation_loss = 0.0
+        step+=1
         if step % evaluate == 0:
           with torch.no_grad():
               for batch in self.val_dataloader:
