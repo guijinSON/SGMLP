@@ -32,7 +32,6 @@ class FinetuneTrainer():
     for epoch in range(10):
       running_loss = 0.0
       for batch in tqdm(self.train_dataloader):
-        print(batch)
         x = batch['sentence_input_ids'].to(self.device)
         label = batch['label'].to(torch.float).to(self.device)
 
