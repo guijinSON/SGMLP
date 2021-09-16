@@ -8,7 +8,7 @@ from data.dataloader import load_glue_dataset
 from tqdm import tqdm
 
 class FinetuneTrainer():
-  def __init__(self,task,vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device,lr=5e-5,batch_size=64):
+  def __init__(self,task,vocab_size,d_model,d_ffn, maxlen,layers,weight_path,device,lr=5e-5,batch_size=64,evaluate=50):
     self.task = task.lower()
     self.device = device
     if self.task in ['cola','sst2','stsb']:
@@ -44,22 +44,23 @@ class FinetuneTrainer():
 
         running_loss += loss.item()
 
-      self.model.eval()
-      validation_loss = 0.0
-      with torch.no_grad():
-          for batch in self.val_dataloader:
-              x = batch['sentence_input_ids'].to(self.device)
-              label = batch['label'].to(self.device)
+        self.model.eval()
+        validation_loss = 0.0
+        if step % evaluate == 0:
+          with torch.no_grad():
+              for batch in self.val_dataloader:
+                  x = batch['sentence_input_ids'].to(self.device)
+                  label = batch['label'].to(self.device)
 
-              pred = self.model(x).squeeze()
-              loss = self.loss_fn(pred,label.to(torch.float))
+                  pred = self.model(x).squeeze()
+                  loss = self.loss_fn(pred,label.to(torch.float))
 
-              pred = torch.round(pred).to(torch.int)
-              validation_loss += loss.item()
-              self.metric.add_batch(predictions=pred,references=label)
+                  pred = torch.round(pred).to(torch.int)
+                  validation_loss += loss.item()
+                  self.metric.add_batch(predictions=pred,references=label)
 
-          wandb.log({"Train Loss": (running_loss/len(self.train_dataloader)),'metric':self.metric.compute(), "Validation Loss":(validation_loss/len(self.val_dataloader))})
-      self.model.train()
-      running_loss = 0.0
+              wandb.log({"Train Loss": (running_loss/len(self.train_dataloader)),'metric':self.metric.compute(), "Validation Loss":(validation_loss/len(self.val_dataloader))})
+          self.model.train()
+        running_loss = 0.0
       torch.save(self.model.state_dict(),f'{self.task}_{epoch}.pth')
     
