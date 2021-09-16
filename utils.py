@@ -1,6 +1,7 @@
 import torch.optim as  optim 
 import torch.nn as nn
 import numpy as np
+import time
 
 def load_optimizer(param, learning_rate):
     return optim.AdamW(params=param, lr=learning_rate)
@@ -64,3 +65,7 @@ def computeTime(model, device='cuda'):
             time_spent.append(time.time() - start_time)
         i += 1
     print('Avg execution time (ms): {:.3f}'.format(np.mean(time_spent)))
+
+    
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
