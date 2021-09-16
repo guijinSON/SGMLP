@@ -25,6 +25,7 @@ class FinetuneTrainer():
     self.train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     self.val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle =True)
     
+    self.evaluate = evaluate
       
   def finetune(self):
     wandb.init()
@@ -48,7 +49,7 @@ class FinetuneTrainer():
         #self.model.eval()
         validation_loss = 0.0
         step+=1
-        if step % evaluate == 0:
+        if step % self.evaluate == 0:
           with torch.no_grad():
               for batch in self.val_dataloader:
                   x = batch['sentence_input_ids'].to(self.device)
