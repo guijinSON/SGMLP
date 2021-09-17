@@ -79,7 +79,7 @@ class OneSentClassificationHead(nn.Module):
                                 nn.Tanh())
     self.projection = nn.Sequential(nn.LayerNorm(self.d_model),
                                     nn.Linear(self.d_model,5),
-                                    nn.GELU(),
+                                    nn.ELU(),
                                     nn.Linear(5,1),
                                    nn.Sigmoid())
     
