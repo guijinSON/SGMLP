@@ -71,7 +71,7 @@ class gMLP_LanguageModel(gMLP):
 
         return output
 
-class gMLP_multi_LanguageModel(gMLP):
+class gMLP_multi_LanguageModel(multi_gMLP):
     def __init__(self,vocab_size, d_model, d_ffn, seq_len, num_layers,output_logits,evaluate):
         super().__init__(d_model,d_ffn,seq_len,num_layers,evaluate)
         self.embed = TransformerEmbedding(vocab_size,d_model,seq_len,0.1)
