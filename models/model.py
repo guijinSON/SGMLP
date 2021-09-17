@@ -77,8 +77,7 @@ class OneSentClassificationHead(nn.Module):
     
     self.pooler = nn.Sequential(nn.Linear(self.d_model,self.d_model),
                                 nn.Tanh())
-    self.projection = nn.Sequential(nn.LayerNorm(self.d_model),
-                                    nn.Linear(self.d_model,5),
+    self.projection = nn.Sequential(nn.Linear(self.d_model,5),
                                     nn.ELU(),
                                     nn.Linear(5,1),
                                    nn.Sigmoid())
