@@ -88,7 +88,7 @@ class gMLP_multi_LanguageModel(multi_gMLP):
         return output
     
 
-def build_model(num_tokens, d_model, d_ffn, seq_len, num_layers,output_logits=False,evaluate=False):
+def build_base_model(num_tokens=50265, d_model=768, d_ffn=2048, seq_len=128, num_layers=12,output_logits=False,evaluate=False):
     
     model = gMLP_LanguageModel(num_tokens,d_model,d_ffn,seq_len,num_layers,output_logits,evaluate)
     #if torch.cuda.is_available():
@@ -96,7 +96,7 @@ def build_model(num_tokens, d_model, d_ffn, seq_len, num_layers,output_logits=Fa
     return model
 
 
-def build_multi_model(num_tokens, d_model, d_ffn, seq_len, num_layers,output_logits=False,evaluate=False):
+def build_large_model(num_tokens=50265, d_model=768, d_ffn=2400, seq_len=128, num_layers=24,output_logits=False,evaluate=False):
     
     model = gMLP_multi_LanguageModel(num_tokens,d_model,d_ffn,seq_len,num_layers,output_logits,evaluate)
     #if torch.cuda.is_available():
