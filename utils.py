@@ -3,7 +3,7 @@ import time
 import torch
 import torch.optim as  optim 
 import torch.nn as nn
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer,BertForMaskedLM
 
 def load_optimizer(param, learning_rate):
     return optim.AdamW(params=param, lr=learning_rate)
