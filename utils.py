@@ -94,3 +94,4 @@ def BERT_inference(text,max=128,mask=103):
     predicted_vocab = np.argmax(masked_input)
     predicted_vocab = tokenizer.convert_ids_to_tokens([predicted_vocab])
     return predicted_vocab
+
