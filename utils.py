@@ -70,3 +70,14 @@ def compute_time(model,vocab_size = 50265, batch_size = 64, max_length = 128, de
     
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def SGMLP_inference(text,model,max=128,mask=50264):
+    tokenizer = AutoTokenizer.from_pretrained('roberta-base')
+    input  = tokenizer([text,''],max_length=max,padding='max_length',return_tensors='np')['input_ids']
+    idx = int(np.where(input[0]==mask)[0])
+    output = model(torch.IntTensor(input))[0]
+    output = torch.squeeze(output)
+    masked_input = output[idx].detach().numpy()
+    predicted_vocab = np.argmax(masked_input)
+    predicted_vocab = tokenizer.convert_ids_to_tokens([predicted_vocab])
+    return predicted_vocab
