@@ -95,3 +95,14 @@ def BERT_inference(text,max=128,mask=103):
     predicted_vocab = tokenizer.convert_ids_to_tokens([predicted_vocab])
     return predicted_vocab
 
+def apply_weight(tmp_model,path):
+    weight = torch.load(PATH,map_location=torch.device('cpu'))
+    model_weight = {}
+    for key,val in weight.items():
+        if key.startswith('module.'):
+            model_weight[key[7:]] = val
+        else:
+            print(key)
+    tmp_model.load_state_dict(model_weight)
+    tmp_model.eval()
+    return tmp_model
