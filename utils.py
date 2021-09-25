@@ -95,7 +95,7 @@ def BERT_inference(text,max=128,mask=103):
     predicted_vocab = tokenizer.convert_ids_to_tokens([predicted_vocab])
     return predicted_vocab
 
-def apply_weight(model,path)
+def apply_weight(model,path):
     pretrained_dict = torch.load(path,map_location=torch.device('cpu'))
     model_dict = model.state_dict()
     pretrained_dict = {k: v for k,v in pretrained_dict.items() if k in model_dict}
