@@ -179,7 +179,7 @@ class multi_gMLPBLOCK(nn.Module):
     
 class multi_gMLPBLOCK_Extended(nn.Module):
     def __init__(self,d_model,d_ffn,seq_len,evaluate,n):
-        super(multi_gMLPBLOCK,self).__init__()
+        super(multi_gMLPBLOCK_Extended,self).__init__()
         self.layer_norm = nn.LayerNorm(d_model)
         self.channel_proj_i = nn.Sequential(nn.Linear(d_model,d_ffn),nn.GELU())
         self.channel_proj_ii = nn.Sequential(nn.Linear(d_ffn,d_model),nn.GELU())
