@@ -40,7 +40,7 @@ class SpatialGatingUnit_Sigmoid_Extended(nn.Module):
         self.spatial_proj_i = nn.Conv1d(seq_len,seq_len,1)
         self.spatial_proj_ii = nn.Conv1d(seq_len,seq_len,1)
 
-        self.attn_extention = nn.MultiheadAttention(d_ffn, 2)
+        self.attn_extention = nn.MultiheadAttention(d_ffn, 2,batch_first=True)
 
         nn.init.constant_(self.spatial_proj_i.bias, -1.0)
         nn.init.constant_(self.spatial_proj_ii.bias, 1.0)
@@ -112,7 +112,7 @@ class gMLPBLOCK(nn.Module):
 
 class gMLPBLOCK_Extended(nn.Module):
     def __init__(self,d_model,d_ffn,seq_len,evaluate,wr=None):
-        super(gMLPBLOCK,self).__init__()
+        super(gMLPBLOCK_Extended,self).__init__()
         self.layer_norm = nn.LayerNorm(d_model)
         self.channel_proj_i = nn.Sequential(nn.Linear(d_model,d_ffn),nn.GELU())
         self.channel_proj_ii = nn.Sequential(nn.Linear(d_ffn,d_model),nn.GELU())
