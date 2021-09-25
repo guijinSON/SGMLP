@@ -59,7 +59,7 @@ class SpatialGatingUnit_Sigmoid_Extended(nn.Module):
 
         output = [self.spatial_proj_i(torch.unsqueeze(x[n],0)) if idx==0 else self.spatial_proj_ii(torch.unsqueeze(x[n],0)) for n,idx in enumerate(cls_idx)]
         output = torch.squeeze(torch.stack(output)) 
-        output = self.gelu(output+residual) + self.attn_extention(residual,residual,residual)
+        output = self.gelu(output+residual) + self.attn_extention(residual,residual,residual)[0]
         return output
 
 class SpatialGatingUnit_multi(nn.Module):
