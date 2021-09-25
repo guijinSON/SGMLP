@@ -40,7 +40,7 @@ class SpatialGatingUnit_Sigmoid_Extended(nn.Module):
         self.spatial_proj_i = nn.Conv1d(seq_len,seq_len,1)
         self.spatial_proj_ii = nn.Conv1d(seq_len,seq_len,1)
 
-        self.attn_extention = nn.MultiheadAttention(d_ffn, 2,batch_first=True)
+        self.attn_extention = nn.MultiheadAttention(d_ffn, 1,batch_first=True)
 
         nn.init.constant_(self.spatial_proj_i.bias, -1.0)
         nn.init.constant_(self.spatial_proj_ii.bias, 1.0)
