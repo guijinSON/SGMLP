@@ -55,7 +55,7 @@ class multi_gMLP(nn.Module):
         x = self.model(x)
         return x
     
- class gMLP_Extended(nn.Module):
+class gMLP_Extended(nn.Module):
     def __init__(self,d_model,d_ffn,seq_len,num_layers,evaluate):
         super(gMLP_Extended,self).__init__()
         self.evaluate = evaluate
