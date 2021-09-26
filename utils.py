@@ -96,10 +96,10 @@ def BERT_inference(text,max=128,mask=103):
     return predicted_vocab
 
 def apply_weight(model,path):
-    pretrained_dict = torch.load(path,map_location=torch.device('cpu'))
-    model_dict = model.state_dict()
-    pretrained_dict = {k: v for k,v in pretrained_dict.items() if k in model_dict}
-    model_dict.update(pretrained_dict)
-    model.load_state_dict(model_dict)
+    pretrained_dict =  torch.load(path,map_location=torch.device('cpu'))
+    weights = {}
+    for key in pretrained_dict:
+        weights[key[7:]] = pretrained_dict[key]
+    model.load_state_dict(weights)
     model.eval()
     return model
