@@ -59,6 +59,13 @@ large_model = apply_weight(large_model,PATH)
 SGMLP_inference('A bird has <mask> legs.',large_model)
 ```
 
+## Team  
+* 김승원 - [Seungone Kim](https://github.com/SeungoneKim) 
+* 손규진 - [GUIJIN SON](https://github.com/guijinSON)
+* 주세준 - [Sejune Joo](https://github.com/joocjun)
+* 조우진 - [WOOJIN CHO](https://github.com/WooJin-Cho)
+* 채형주 - [Hyungjoo Chae](https://github.com/kyle8581)
+
 ## References
 
 ```bibtex
@@ -71,12 +78,3 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
     eprint = {1910.10683},
 }
 ```
-
-
-## Team  
-* 김승원 - [Seungone Kim](https://github.com/SeungoneKim) 
-* 손규진 - [GUIJIN SON](https://github.com/guijinSON)
-* 주세준 - [Sejune Joo](https://github.com/joocjun)
-* 조우진 - [WOOJIN CHO](https://github.com/WooJin-Cho)
-* 채형주 - [Hyungjoo Chae](https://github.com/kyle8581)
-
