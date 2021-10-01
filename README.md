@@ -1,5 +1,5 @@
 # SG-MLP
-This repository contains code for Switch Gated Multi-Layer Perceptron(SG-MLP), an attentionless, novel architecture for Natural Language Understanding(NLU).  
+This repository contains code for Switch Gated Multi-Layer Perceptron(SG-MLP), a novel, and attentionless architecture for Natural Language Understanding(NLU).  
 
 ## Team  
 * 김승원 - [Seungone Kim](https://github.com/SeungoneKim) 
