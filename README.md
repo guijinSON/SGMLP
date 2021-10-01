@@ -59,6 +59,18 @@ large_model = apply_weight(large_model,PATH)
 SGMLP_inference('A bird has <mask> legs.',large_model)
 ```
 
+## References
+
+```bibtex
+@article{2019t5,
+    author = {Colin Raffel and Noam Shazeer and Adam Roberts and Katherine Lee and Sharan Narang and Michael Matena and Yanqi Zhou and Wei Li and Peter J. Liu},
+    title = {Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer},
+    journal = {arXiv e-prints},
+    year = {2019},
+    archivePrefix = {arXiv},
+    eprint = {1910.10683},
+}
+```
 
 
 ## Team  
