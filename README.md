@@ -59,7 +59,7 @@ large_model = apply_weight(large_model,PATH)
 SGMLP_inference('A bird has <mask> legs.',large_model)
 ```
 
-## Team  
+## Contributors
 * 김승원 - [Seungone Kim](https://github.com/SeungoneKim) 
 * 손규진 - [GUIJIN SON](https://github.com/guijinSON)
 * 주세준 - [Sejune Joo](https://github.com/joocjun)
