@@ -52,7 +52,7 @@ SG-MLP trained on the C4 corpus, learns to predict proper grammer and commonsens
 from SGMLP.models.model import build_large_model
 from SGMLP.utils import SGMLP_inference, apply_weight
 
-PATH = '/content/drive/Shareddrives/ICT/weights/model_large_200000.pth'
+PATH = '/weights/SGMLP_Large.pth'
 large_model = build_large_model(output_logits = True)
 large_model = apply_weight(large_model,PATH)
 
