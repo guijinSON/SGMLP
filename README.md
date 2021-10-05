@@ -68,6 +68,21 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
 
 ## References
 
+```
+@InProceedings{Zhu_2015_ICCV,
+    title = {Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books},
+    author = {Zhu, Yukun and Kiros, Ryan and Zemel, Rich and Salakhutdinov, Ruslan and Urtasun, Raquel and Torralba, Antonio and Fidler, Sanja},
+    booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+    month = {December},
+    year = {2015}
+}
+```
+```
+@InProceedings{wikitext,
+    author={Stephen, Merity and Caiming ,Xiong and James, Bradbury and Richard Socher}
+    year=2016
+}
+```
 ```bibtex
 @article{2019t5,
     author = {Colin Raffel and Noam Shazeer and Adam Roberts and Katherine Lee and Sharan Narang and Michael Matena and Yanqi Zhou and Wei Li and Peter J. Liu},
@@ -78,3 +93,13 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
     eprint = {1910.10683},
 }
 ```
+```
+@inproceedings{wang2019glue,
+  title={{GLUE}: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding},
+  author={Wang, Alex and Singh, Amanpreet and Michael, Julian and Hill, Felix and Levy, Omer and Bowman, Samuel R.},
+  note={In the Proceedings of ICLR.},
+  year={2019}
+}
+```
+
+
