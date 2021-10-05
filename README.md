@@ -68,7 +68,7 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
 
 ## References
 
-```
+```bibtex
 @InProceedings{Zhu_2015_ICCV,
     title = {Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books},
     author = {Zhu, Yukun and Kiros, Ryan and Zemel, Rich and Salakhutdinov, Ruslan and Urtasun, Raquel and Torralba, Antonio and Fidler, Sanja},
@@ -77,7 +77,7 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
     year = {2015}
 }
 ```
-```
+```bibtex
 @InProceedings{wikitext,
     author={Stephen, Merity and Caiming ,Xiong and James, Bradbury and Richard Socher}
     year=2016
@@ -93,12 +93,12 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
     eprint = {1910.10683},
 }
 ```
-```
-@article{warstadt2018neural,
-  title={Neural Network Acceptability Judgments},
-  author={Warstadt, Alex and Singh, Amanpreet and Bowman, Samuel R},
-  journal={arXiv preprint arXiv:1805.12471},
-  year={2018}
+```bibtex
+@inproceedings{wang2019glue,
+  title={{GLUE}: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding},
+  author={Wang, Alex and Singh, Amanpreet and Michael, Julian and Hill, Felix and Levy, Omer and Bowman, Samuel R.},
+  note={In the Proceedings of ICLR.},
+  year={2019}
 }
 ```
 
