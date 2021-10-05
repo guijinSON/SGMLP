@@ -94,7 +94,7 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
 }
 ```
 ```bibtex
-@inproceedings{wang2019glue,
+@InProceedings{wang2019glue,
   title={{GLUE}: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding},
   author={Wang, Alex and Singh, Amanpreet and Michael, Julian and Hill, Felix and Levy, Omer and Bowman, Samuel R.},
   note={In the Proceedings of ICLR.},
