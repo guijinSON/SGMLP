@@ -94,11 +94,11 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
 }
 ```
 ```
-@inproceedings{wang2019glue,
-  title={{GLUE}: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding},
-  author={Wang, Alex and Singh, Amanpreet and Michael, Julian and Hill, Felix and Levy, Omer and Bowman, Samuel R.},
-  note={In the Proceedings of ICLR.},
-  year={2019}
+@article{warstadt2018neural,
+  title={Neural Network Acceptability Judgments},
+  author={Warstadt, Alex and Singh, Amanpreet and Bowman, Samuel R},
+  journal={arXiv preprint arXiv:1805.12471},
+  year={2018}
 }
 ```
 
