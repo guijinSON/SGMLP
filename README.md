@@ -1,5 +1,7 @@
 # SG-MLP
-The Official Pytorch Implementation for `Switch Gated Multi-Layer Perceptron(SG-MLP)`.    
+The Official Pytorch Implementation for `Switch Gated Multi-Layer Perceptron(SG-MLP)`. Accepted at ACK 2021.
+
+- [SG-MLP: Switch Gated Multi-Layer Perceptron Model for Natural Language Understanding](https://www.koreascience.or.kr/article/CFKO202133649066979.page)
 
 SG-MLP, a novel and attentionless architecture for Natural Language Understanding(NLU), achieves decent results in the GLUE benchmark without any help of the Attention Mechanism in both Pre-Training and FineTuning steps. The following repositiory contains demos, pretrained models, and supplementaries necessary for reproducing the results.
 
