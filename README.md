@@ -62,7 +62,7 @@ SGMLP_inference('A bird has <mask> legs.',large_model)
 ```
 
 ## Contributors
-* 김승원 - [Seungone Kim](https://github.com/SeungoneKim) 
+* 김승원 - [Seungone Kim](https://seungonekim.github.io/) 
 * 손규진 - [GUIJIN SON](https://github.com/guijinSON)
 * 주세준 - [SE JUNE JOO](https://github.com/joocjun)
 * 조우진 - [WOOJIN CHO](https://github.com/WooJin-Cho)
